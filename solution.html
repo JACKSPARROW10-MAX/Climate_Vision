@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Climate Impact Solutions Hub</title>
+  <link rel="stylesheet" href="solution.css">
+  <script defer src="solution.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Climate Impact Solutions Hub</div>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="map.html">Map and Data</a></li>
+      <li><a href="solution.html" class="active">Future Prediction</a></li>
+      <li><a href="ngo.html">NGOs</a></li>
+    </ul>      
+  </nav>
+  <div class="map-container">
+    <iframe src="https://www.google.com/maps/d/embed?mid=1ecZTjcx_BJLBQrlc6rIzLjlFn6Vsrog&usp=sharing" width="100%" height="500"></iframe>
+  </div>
+
+  <div class="container">
+    <header class="hero">
+      <h1>Climate Impact Solutions Hub</h1>
+      <p>Empowering communities to tackle climate change together</p>
+      <div class="stats">
+        <div class="stat">
+          <span class="number" id="active-projects">0</span>
+          <span class="label">Active Solution</span>
+        </div>
+        <div class="stat">
+          <span class="number" id="resources-count">0</span>
+          <span class="label">Resources</span>
+        </div>
+        <div class="stat">
+          <span class="number" id="reports-count">0</span>
+          <span class="label">Impact Reports</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="tabs">
+      <div class="tabs-nav">
+        <button class="tab-button" id="solutions-tab">Solutions</button>
+        <button class="tab-button" id="report-tab">Report Impact</button>
+        <button class="tab-button" id="learn-tab">Resources</button>
+        <button class="tab-button" id="submit-solution-tab">Submit Solution</button>
+      </div>
+
+      <div class="tabs-content">
+        <div class="tab-content" id="solutions-content">
+          <div class="solutions-list" id="solution-cards-container"></div>
+        </div>
+
+        <div class="tab-content" id="report-content">
+          <div class="card">
+            <h3>Report Climate Impact</h3>
+            <form id="impact-form">
+              <input type="text" id="impact-title" placeholder="Title of Impact" required>
+              <input type="text" id="impact-location" placeholder="Location" required>
+              <input type="date" id="impact-date" required>
+              <textarea id="impact-description" placeholder="Describe the impact in detail..." required></textarea>
+              <input type="text" id="impact-type" placeholder="Type of Impact" required>
+              <input type="number" id="impact-severity" placeholder="Severity Level (1-10)" required>
+              <button type="submit" id="submit-report">Submit Report</button>
+            </form>
+          </div>
+          <div class="card-grid" id="reports-list"></div>
+        </div>
+
+        <div class="tab-content" id="learn-content">
+          <div class="card-grid" id="resource-cards-container"></div>
+        </div>
+
+        <div class="tab-content" id="submit-solution-content">
+          <div class="card">
+            <h3>Submit a Solution</h3>
+            <form id="solution-form">
+              <input type="text" id="solution-title" placeholder="Solution Title" required>
+              <input type="text" id="solution-author" placeholder="Your Name" required>
+              <textarea id="solution-description" placeholder="Describe your climate solution..." required></textarea>
+              <input type="text" id="solution-impact" placeholder="Expected Impact" required>
+              <input type="text" id="solution-timeline" placeholder="Timeline" required>
+              <input type="text" id="solution-category" placeholder="Category" required>
+              <textarea id="solution-challenges" placeholder="Potential Challenges..." required></textarea>
+              <button type="submit" id="submit-solution">Submit Solution</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2023 Climate Impact Solutions Hub. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+

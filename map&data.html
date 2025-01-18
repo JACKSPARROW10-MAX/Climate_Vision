@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Climate Impact Dashboard</title>
+  
+  <link rel="stylesheet" href="map.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="map&data.js" defer></script>
+</head>
+<body>
+  <nav class="navbar">
+    <ul>
+      <li><a href="home.html" >Home</a></li>
+      <li><a href="map.html" class="active">Map and Data</a></li>
+      <li><a href="solution.html">Future Prediction</a></li>
+      <li><a href="ngo.html">NGOs</a></li>
+    </ul>      
+  </nav>
+future-prediction
+  <section id="home" class="section">
+    <div class="dashboard">
+      <div class="card alert">
+        <div class="card-header">
+          <div class="header-icon">⚠️ Interactive Map of most affected regions in different states</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="map" class="section">
+    <div class="map-container">
+      <iframe
+        src="https://app.mapline.com/map/map_5692fd91/WFBJRHBubFNrWTR1SmlQS1lPN2NCWTFIUEdjZ3ZLdmhqS01IU0"
+        width="100%"
+        height="500"
+        class="rounded-map"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+  </section>
+
+  <section id="data" class="section">
+    <div>
+      <h1 class="card-title">Climate Crisis Impact Dashboard - India</h1>
+    </div>
+    <div class="charts">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Climate-Related Deaths</h2>
+          <p class="card-description">Annual mortality due to climate events</p>
+        </div>
+        <canvas id="mortalityChart"></canvas>
+        <p>Heatwaves, floods, and climate-induced diseases are the leading causes of climate-related deaths. The trend shows a consistent increase in mortality, reflecting the growing intensity and frequency of extreme climate events.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Economic Impact on GDP</h2>
+          <p class="card-description">Percentage decline and costs in billions USD</p>
+        </div>
+        <canvas id="gdpImpactChart"></canvas>
+        <p>India's GDP has been adversely affected by climate events, with a visible decline over the years. Economic losses, measured in billions of USD, are driven by damages to infrastructure, healthcare costs, and disaster recovery efforts.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Agricultural Crisis</h2>
+          <p class="card-description">Yield reduction and crop losses</p>
+        </div>
+        <canvas id="myChart" width="400" height="200"></canvas>
+        <p>Climate change has significantly reduced agricultural yields due to droughts, unseasonal rainfall, and soil degradation. The yield index has declined steadily, while the percentage of crop losses continues to rise, threatening food security.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Employment Crisis</h2>
+          <p class="card-description">Sector-wise job displacement in millions</p>
+        </div>
+        <canvas id="employmentChart" width="400" height="200"></canvas>
+        <p>Job displacement due to climate change is most pronounced in the agricultural sector, followed by industrial and service sectors. Losses are attributed to extreme weather events disrupting production and supply chains.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Recovery Rates of India</h2>
+          <p class="card-description">Improved resilience and recovery over the years</p>
+        </div>
+        <canvas id="recoveryChart"></canvas>
+        <p>Despite the damages, India's recovery rates have improved over time due to enhanced resilience, better infrastructure, and disaster management strategies. The trend suggests growing capability to bounce back from climate-related challenges.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Sectors Affected by Climate Change</h2>
+          <p class="card-description">Distribution of impact across different sectors</p>
+        </div>
+        <canvas id="myPieChart" width="400" height="200"></canvas>
+        <p>The impact of climate change varies across different sectors, with agriculture, infrastructure, and public health being the most affected. Understanding this distribution helps in prioritizing adaptation and mitigation strategies.</p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

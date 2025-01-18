@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Impact Solutions Hub</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #2ecc71;
+            --secondary-color: #3498db;
+            --background-color: #f0f4f8;
+            --text-color: #2c3e50;
+            --card-background: #ffffff;
+            --navbar-color: #34495e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .navbar {
+            background-color: var(--navbar-color);
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar li {
+            margin-left: 20px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 20px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(46, 204, 113, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .search-section {
+            background-color: var(--card-background);
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .search-form input {
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .search-form button {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .success-stories {
+            background-color: var(--card-background);
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .success-stories h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .story-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .story-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .image-cards {
+            background-color: var(--background-color);
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        .image-cards h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .image-card {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .image-card h3 {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .card-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .image-card:hover .card-info {
+            opacity: 1;
+        }
+
+        .show-more-btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        footer {
+            background-color: var(--navbar-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .ngo-card {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .ngo-card h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .navbar ul {
+                margin-top: 15px;
+            }
+
+            .navbar li {
+                margin: 10px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .search-form {
+                flex-direction: column;
+            }
+
+            .search-form input,
+            .search-form button {
+                width: 100%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Climate Impact Solutions Hub</div>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="map.html">Map and Data</a></li>
+            <li><a href="solution.html">Future Prediction</a></li>
+            <li><a href="ngo.html" class="active">NGOs</a></li>
+        </ul>      
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>NGO Directory</h1>
+                <p>Find and connect with NGOs making a difference in climate action</p>
+            </div>
+        </section>
+
+        <section class="search-section">
+            <div class="container">
+                <h2>Search NGOs</h2>
+                <form class="search-form" id="searchForm">
+                    <input type="text" id="searchInput" placeholder="Search by NGO name, city, or state" aria-label="Search NGOs">
+                    <button type="submit">Search</button>
+                </form>
+                <div id="results"></div>
+            </div>
+        </section>
+
+        <section class="success-stories">
+            <div class="container">
+                <h2>Success Stories</h2>
+                <div class="stories-grid">
+                    <div class="story-card">
+                        <h3>Reforestation Project</h3>
+                        <p>Our NGO successfully planted over 100,000 trees in deforested areas, significantly improving local biodiversity.</p>
+                    </div>
+                    <div class="story-card">
+                        <h3>Clean Energy Initiative</h3>
+                        <p>We helped 50 rural communities transition to solar power, reducing their carbon footprint by 60%.</p>
+                    </div>
+                    <div class="story-card">
+                        <h3>Ocean Cleanup Campaign</h3>
+                        <p>Our volunteers removed over 5 tons of plastic waste from coastal areas, protecting marine life.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="image-cards">
+            <div class="container">
+                <h2>Our Impact</h2>
+                <div class="image-grid" id="imageGrid">
+                    <!-- Initial cards will be added here by JavaScript -->
+                </div>
+                <button class="show-more-btn" id="showMoreBtn">Show More</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Climate Impact Solutions Hub. All Rights Reserved.</p>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageGrid = document.getElementById('imageGrid');
+            const showMoreBtn = document.getElementById('showMoreBtn');
+            const searchForm = document.getElementById('searchForm');
+            const searchInput = document.getElementById('searchInput');
+            const resultsDiv = document.getElementById('results');
+            let visibleCards = 0;
+
+            const cardData = [
+            { image: 'https://th.bing.com/th/id/R.faa49432178f4e27f79a47732f019790?rik=CYa9uD3lgAgmWw&riu=http%3a%2f%2fecofuneral.ca%2f7442%2fFull%2fiStock_000025377383_Large.jpg&ehk=yq%2f1%2b4QBbsW3ImwAlWBD03G6ppXQ237%2f%2f9wmMAXsxUw%3d&risl=1&pid=ImgRaw&r=0', title: 'Reforestation', info: 'Planting trees to restore forests and combat climate change.' },
+                { image: 'https://g.foolcdn.com/editorial/images/464328/solar-panels-with-mountains-in-background.jpg', title: 'Solar Energy', info: 'Harnessing the power of the sun for clean, renewable energy.' },
+                { image: 'https://assets.theoceancleanup.com/app/uploads/2019/10/TheOceanCleanup_October2nd_Press_Briefing_System001B-24.jpg', title: 'Ocean Cleanup', info: 'Removing plastic and debris from our oceans to protect marine life.' },
+                { image: 'https://www.green.earth/hs-fs/hubfs/7%20strategies%20for%20Protecting%20Wildlife-Pillar%20%20Protecting%20Vital%20Habitats_visual%201.png?width=1200&height=800&name=7%20strategies%20for%20Protecting%20Wildlife-Pillar%20%20Protecting%20Vital%20Habitats_visual%201.png', title: 'Wildlife Conservation', info: 'Protecting endangered species and their habitats.' },
+                { image: 'https://cdn.tridge.com/attachment/84138def6ccbfcf4b18541963cacba1a58973e6f.jpg', title: 'Sustainable Agriculture', info: 'Promoting eco-friendly farming practices for food security.' },
+                { image: 'https://th.bing.com/th/id/OIP.Ppi2vvUmqawXv40-uABP2QHaE6?rs=1&pid=ImgDetMain', title: 'Green Transportation', info: 'Developing and implementing eco-friendly transportation solutions.' },
+                { image: 'https://c8.alamy.com/comp/2JD7H54/7-green-waste-reduction-concept-has-many-dimensions-transportation-garbage-material-water-biodiversity-energy-emission-in-carbon-footprint-2JD7H54.jpg', title: 'Waste Reduction', info: 'Minimizing waste through recycling and sustainable practices.' },
+                { image: 'https://th.bing.com/th/id/OIP.50xIwHdo1jkYQyZN0I9j9gHaED?rs=1&pid=ImgDetMainhttps://source.unsplash.com/400x300/?renewable-energy', title: 'Renewable Energy', info: 'Advancing clean energy technologies for a sustainable future.' },
+                 { image: 'https://source.unsplash.com/400x300/?water-conservation', title: 'Water Conservation', info: 'Preserving and protecting our precious water resources.' },
+                { image: 'https://source.unsplash.com/400x300/?air-quality', title: 'Air Quality Improvement', info: 'Working to reduce air pollution and improve public health.' },
+                { image: 'https://source.unsplash.com/400x300/?green-building', title: 'Green Building', info: 'Promoting sustainable architecture and construction practices.' },
+                { image: 'https://source.unsplash.com/400x300/?biodiversity', title: 'Biodiversity Protection', info: 'Safeguarding the variety of life on Earth.' },
+                { image: 'https://source.unsplash.com/400x300/?climate-education', title: 'Climate Education', info: 'Raising awareness about climate change and its impacts.' },
+                { image: 'https://source.unsplash.com/400x300/?sustainable-cities', title: 'Sustainable Cities', info: 'Creating eco-friendly urban environments for the future.' },
+                { image: 'https://source.unsplash.com/400x300/?sustainable-cities', title: 'Sustainable Cities', info: 'Creating eco-friendly urban environments for the future.' },
+                { image: 'https://source.unsplash.com/400x300/?clean-energy', title: 'Clean Energy Innovation', info: 'Developing cutting-edge technologies for renewable energy.' },
+                { image: 'https://source.unsplash.com/400x300/?eco-tourism', title: 'Eco-Tourism', info: 'Promoting responsible travel that conserves the environment.' },
+                { image: 'https://source.unsplash.com/400x300/?green-tech', title: 'Green Technology', info: 'Advancing environmentally friendly technological solutions.' },
+                { image: 'https://source.unsplash.com/400x300/?circular-economy', title: 'Circular Economy', info: 'Promoting sustainable resource use and waste reduction.' },
+                { image: 'https://source.unsplash.com/400x300/?carbon-capture', title: 'Carbon Capture', info: 'Developing technologies to remove CO2 from the atmosphere.' },
+                { image: 'https://source.unsplash.com/400x300/?sustainable-fashion', title: 'Sustainable Fashion', info: 'Promoting eco-friendly practices in the fashion industry.' },
+                { image: 'https://source.unsplash.com/400x300/?green-energy', title: 'Green Energy Storage', info: 'Improving energy storage for renewable sources.' },
+                { image: 'https://source.unsplash.com/400x300/?ecosystem-restoration', title: 'Ecosystem Restoration', info: 'Reviving damaged ecosystems to support biodiversity.' },
+                { image: 'https://source.unsplash.com/400x300/?sustainable-fishing', title: 'Sustainable Fishing', info: 'Promoting responsible fishing practices to protect marine life.' },
+                { image: 'https://source.unsplash.com/400x300/?green-chemistry', title: 'Green Chemistry', info: 'Developing eco-friendly chemical processes and products.' },
+                { image: 'https://source.unsplash.com/400x300/?climate-resilience', title: 'Climate Resilience', info: 'Building community adaptability to climate change impacts.' }
+            ];
+
+            function addCards(count) {
+                for (let i = 0; i < count && visibleCards < cardData.length; i++) {
+                    const card = cardData[visibleCards];
+                    const newCard = document.createElement('div');
+                    newCard.className = 'image-card';
+                    newCard.innerHTML = `
+                        <img src="${card.image}" alt="${card.title}">
+                        <h3>${card.title}</h3>
+                        <div class="card-info">
+                            <h3>${card.title}</h3>
+                            <p>${card.info}</p>
+                        </div>
+                    `;
+                    imageGrid.appendChild(newCard);
+                    visibleCards++;
+                }
+
+                if (visibleCards >= cardData.length) {
+                    showMoreBtn.style.display = 'none';
+                }
+            }
+
+            // Initially add 8 cards
+            addCards(8);
+
+            showMoreBtn.addEventListener('click', function() {
+                addCards(8);
+            });
+
+            // NGO data
+            const ngoData = [
+            { name: "Balipara Foundation", city: "Tezpur", state: "Assam", contact: "+91 3712 234 123" },
+                { name: "Sambodhi Foundation", city: "Patna", state: "Bihar", contact: "+91 612 2567 2345" },
+                { name: "Jan Swasthya Sahyog", city: "Bilaspur", state: "Chhattisgarh", contact: "+91 7752 232 123" },
+                { name: "Kachchh Ecological Society (KES)", city: "Bhuj", state: "Gujarat", contact: "+91 2832 234 123" },
+                { name: "Gramya Resource Centre for Women", city: "Ahmedabad", state: "Gujarat", contact: "+91 79 2567 2345" },
+                { name: "Social and Rural Development Association (SARDA)", city: "Ahmedabad", state: "Gujarat", contact: "+91 79 2567 1234" },
+                { name: "Vikram Sarabhai Centre for Development Interaction (VIKSAT)", city: "Ahmedabad", state: "Gujarat", contact: "+91 79 2657 2345" },
+                { name: "Eco Needs Foundation", city: "Ahmedabad", state: "Gujarat", contact: "+91 79 2567 2345" },
+                { name: "Green Karm", city: "Ahmedabad", state: "Gujarat", contact: "+91 79 2657 2345" },
+                { name: "Toxics Link", city: "New Delhi", state: "Delhi", contact: "+91 11 2995 5123" },
+                { name: "Sustainable Environment and Ecological Development Society (SEEDS)", city: "New Delhi", state: "Delhi", contact: "+91 11 2656 1234" },
+                { name: "M.C. Mehta Environmental Foundation", city: "New Delhi", state: "Delhi", contact: "+91 11 2338 1234" },
+                { name: "Environment Protection Fund (EPF)", city: "New Delhi", state: "Delhi", contact: "+91 11 2338 1234" },
+                { name: "Indian Biodiversity Conservation Society (IBCS)", city: "New Delhi", state: "Delhi", contact: "+91 11 2338 1234" },
+                { name: "Indian Society for Ecological Economics (INSEE)", city: "New Delhi", state: "Delhi", contact: "+91 11 2338 1234" },
+                { name: "The Climate Reality Project India", city: "New Delhi", state: "Delhi", contact: "+91 11 2658 1234" },
+                { name: "Earthwatch Institute India", city: "New Delhi", state: "Delhi", contact: "+91 11 2658 1234" },
+                { name: "Uthaan", city: "New Delhi", state: "Delhi", contact: "+91 11 2338 1234" },
+                { name: "Wildlife SOS", city: "New Delhi", state: "Delhi", contact: "+91 11 2338 1234" },
+                { name: "Raman Development Consultants (RDC)", city: "New Delhi", state: "Delhi", contact: "+91 11 2645 6789" },
+                { name: "Lok Awaas Yojana", city: "New Delhi", state: "Delhi", contact: "+91 11 2338 1234" },
+                { name: "Ashoka Innovators for the Public", city: "New Delhi", state: "Delhi", contact: "+91 11 2636 1234" },
+                { name: "India Carbon Outlook", city: "New Delhi", state: "Delhi", contact: "+91 11 2643 1234" },
+                { name: "Save Green Foundation", city: "New Delhi", state: "Delhi", contact: "+91 11 2332 1234" },
+                { name: "The Energy Efficiency Foundation of India (TEEFI)", city: "New Delhi", state: "Delhi", contact: "+91 11 2567 1234" },
+                { name: "Climate Action Network South Asia (CANSA)", city: "New Delhi", state: "Delhi", contact: "+91 11 2658 1234" },
+                { name: "Green Earth Foundation", city: "New Delhi", state: "Delhi", contact: "+91 11 2339 2345" },
+                { name: "Wildlife Protection Society of India (WPSI)", city: "New Delhi", state: "Delhi", contact: "+91 11 2339 2345" },
+                { name: "People's Union for Civil Liberties (PUCL)", city: "New Delhi", state: "Delhi", contact: "+91 11 2658 1234" },
+                { name: "Integrated Rural Development Foundation (IRDF)", city: "New Delhi", state: "Delhi", contact: "+91 11 2689 2345" },
+                { name: "Indian Centre for Integrated Development (ICID)", city: "New Delhi", state: "Delhi", contact: "+91 11 2683 2345" },
+                { name: "People's Movement for Sustainable Development", city: "New Delhi", state: "Delhi", contact: "+91 11 2339 1234" },
+                { name: "Society for Environment, Education, and Development (SEED)", city: "New Delhi", state: "Delhi", contact: "+91 11 2658 1234" },
+                { name: "Indian Renewable Energy Development Association", city: "New Delhi", state: "Delhi", contact: "+91 11 2658 2345" },
+                { name: "Save Environment and Regenerate Green Earth (SERGE)", city: "New Delhi", state: "Delhi", contact: "+91 11 2339 2345" },
+                { name: "Sustainscape Foundation", city: "New Delhi", state: "Delhi", contact: "+91 11 2657 1234" },
+                { name: "EcoTaskForce", city: "New Delhi", state: "Delhi", contact: "+91 11 2567 2345" },
+                { name: "Ekjut India", city: "New Delhi", state: "Delhi", contact: "+91 11 2339 2345" },
+                { name: "Lokadrusti", city: "New Delhi", state: "Delhi", contact: "+91 11 2568 1234" },
+                { name: "Centre for Policy Research in Environment and Development (CPRED)", city: "New Delhi", state: "Delhi", contact: "+91 11 2658 2345" },
+                { name: "Centre for Applied Research and Development (CARD)", city: "New Delhi", state: "Delhi", contact: "+91 11 2658 1234" },
+                { name: "Indian Environmental Law Organisation (IELO)", city: "New Delhi", state: "Delhi", contact: "+91 11 2339 2345" },
+                { name: "Foundation for Sustainable Development (FSD)", city: "New Delhi", state: "Delhi", contact: "+91 11 2657 2345" },
+                { name: "India Water Foundation", city: "New Delhi", state: "Delhi", contact: "+91 11 2658 1234" },
+                { name: "Environmental Law Research Society (ELRS)", city: "New Delhi", state: "Delhi", contact: "+91 11 2339 2345" },
+                { name: "The Mountain Institute India", city: "New Delhi", state: "Delhi", contact: "+91 11 2567 1234" },
+                { name: "Centre for Action Research and Documentation (CARD)", city: "New Delhi", state: "Delhi", contact: "+91 11 2339 2345" },
+                { name: "National Green Corps (NGC)", city: "New Delhi", state: "Delhi", contact: "+91 11 2339 2345" },
+                { name: "Indian National Trust for Art and Cultural Heritage (INTACH), Natural Heritage Division", city: "New Delhi", state: "Delhi", contact: "+91 11 2461 1234" },
+                { name: "Centre for Sustainable Development (CSD)", city: "New Delhi", state: "Delhi", contact: "+91 11 2658 2345" },
+                { name: "Harit Recyclers Association", city: "New Delhi", state: "Delhi", contact: "+91 11 2658 1234" },
+                { name: "Youth for Climate India (YCI)", city: "New Delhi", state: "Delhi", contact: "+91 11 2339 2345" },
+                { name: "ICLEI South Asia", city: "New Delhi", state: "Delhi", contact: "+91 11 2658 2345" },
+                { name: "Save the Environment (STE)", city: "New Delhi", state: "Delhi", contact: "+91 11 2339 2345" },
+                { name: "Alternative for India Development (AID)", city: "New Delhi", state: "Delhi", contact: "+91 11 2657 2345" },
+                { name: "Global Alliance for Sustainable Development (GASD)", city: "New Delhi", state: "Delhi", contact: "+91 11 2567 2345" },
+                { name: "Indian Environment Association (IEA)", city: "New Delhi", state: "Delhi", contact: "+91 11 2339 2345" },
+                { name: "Green Future Foundation", city: "New Delhi", state: "Delhi", contact: "+91 11 2567 2345" },
+                { name: "Lok Chetna Manch", city: "New Delhi", state: "Delhi", contact: "+91 11 2339 2345" },
+                { name: "Environmental and Social Research Organization (ESRO)", city: "New Delhi", state: "Delhi", contact: "+91 11 2657 2345" },
+                { name: "Centre for Biodiversity Conservation and Research (CBCR)", city: "New Delhi", state: "Delhi", contact: "+91 11 2658 1234" },
+                { name: "Bhoomi Network", city: "New Delhi", state: "Delhi", contact: "+91 11 2339 2345" },
+                { name: "Green Brigade", city: "New Delhi", state: "Delhi", contact: "+91 11 2658 2345" },
+                { name: "Green Energy Foundation", city: "New Delhi", state: "Delhi", contact: "+91 11 2567 2345" },
+                { name: "Earthwatch Institute India", city: "New Delhi", state: "Delhi", contact: "+91 11 2339 2345" },
+                { name: "Save Green", city: "New Delhi", state: "Delhi", contact: "+91 11 2339 2345" },
+                { name: "Rainforest Alliance India", city: "New Delhi", state: "Delhi", contact: "+91 11 2567 2345" },
+                { name: "Wildlife Conservation Society – India", city: "New Delhi", state: "Delhi", contact: "+91 11 2657 2345" },
+                { name: "Eco Pro Environmental Services", city: "New Delhi", state: "Delhi", contact: "+91 11 2658 2345" },
+                { name: "Save Indian Environment and Humanity Trust", city: "New Delhi", state: "Delhi", contact: "+91 11 2657 2345" },
+                { name: "WaterAid India", city: "New Delhi", state: "Delhi", contact: "+91 11 2339 2345" },
+                { name: "Indian Water Works Association (IWWA)", city: "New Delhi", state: "Delhi", contact: "+91 11 2339 2345" },
+                { name: "Action for Food Production (AFPRO)", city: "New Delhi", state: "Delhi", contact: "+91 11 2657 2345" },
+                { name: "Society for Sustainable Urban Development (SSUD)", city: "New Delhi", state: "Delhi", contact: "+91 11 2339 2345" },
+                { name: "Equations", city: "Bengaluru", state: "Karnataka", contact: "+91 80 2558 0800" },
+                { name: "Nature Walk Charitable Trust", city: "Bengaluru", state: "Karnataka", contact: "+91 80 2555 1234" },
+                { name: "Centre for Action Research and Technology for Man, Animal, and Nature (CARTMAN)", city: "Bengaluru", state: "Karnataka", contact: "+91 80 2555 1234" },
+                { name: "Green Initiatives", city: "Bengaluru", state: "Karnataka", contact: "+91 80 2322 1234" },
+                { name: "Aarohan Foundation", city: "Bengaluru", state: "Karnataka", contact: "+91 80 2555 1234" },
+                { name: "SustainEarth", city: "Bengaluru", state: "Karnataka", contact: "+91 80 2556 1234" },
+                { name: "Youth Climate Leaders India", city: "Bengaluru", state: "Karnataka", contact: "+91 80 2323 1234" },
+                { name: "Society for Sustainable Development (SSD)", city: "Bengaluru", state: "Karnataka", contact: "+91 80 2545 1234" },
+                { name: "Earth Brigade Foundation (EBF)", city: "Bengaluru", state: "Karnataka", contact: "+91 80 2325 6789" },
+                { name: "Centre for Wildlife Studies (CWS)", city: "Bengaluru", state: "Karnataka", contact: "+91 80 2323 5678" },
+                { name: "Friends of Climate", city: "Bengaluru", state: "Karnataka", contact: "+91 80 2545 1234" },
+                { name: "Wildlife Research and Conservation Society (WRCS)", city: "Bengaluru", state: "Karnataka", contact: "+91 80 2323 6789" },
+                { name: "Wildlife First", city: "Bengaluru", state: "Karnataka", contact: "+91 80 2323 6789" },
+                { name: "The Banyan Tree Foundation", city: "Bangalore", state: "Karnataka", contact: "+91 80 2323 1234" },
+                { name: "Wayanad Social Service Society (WSSS)", city: "Kalpetta", state: "Kerala", contact: "+91 4936 202 123" },
+                { name: "Samarthan Centre for Development Support", city: "Bhopal", state: "Madhya Pradesh", contact: "+91 755 276 0101" },
+                { name: "Narmada Bachao Andolan (NBA)", city: "Khandwa", state: "Madhya Pradesh", contact: "+91 7276 235 123" },
+                { name: "Samaj Pragati Sahayog (SPS)", city: "Bhopal", state: "Madhya Pradesh", contact: "+91 755 2578 1234" },
+                { name: "Indian Institute of Forest Management (IIFM)", city: "Bhopal", state: "Madhya Pradesh", contact: "+91 755 2578 2345" },
+                { name: "Ananya Foundation", city: "Pune", state: "Maharashtra", contact: "+91 20 2566 1234" },
+                { name: "Bharatiya Agro Industries Foundation (BAIF)", city: "Pune", state: "Maharashtra", contact: "+91 20 2542 0200" },
+                { name: "Earth5R", city: "Mumbai", state: "Maharashtra", contact: "+91 22 2778 1234" },
+                { name: "Climate Vision", city: "Pune", state: "Maharashtra", contact: "+91 20 2567 1234" },
+                { name: "Forum for Environmental Awareness and Conservation", city: "Mumbai", state: "Maharashtra", contact: "+91 22 2555 1234" },
+                { name: "Manav Seva Foundation", city: "Mumbai", state: "Maharashtra", contact: "+91 22 2675 1234" },
+                { name: "Nandini Foundation", city: "Pune", state: "Maharashtra", contact: "+91 20 2555 2345" },
+                { name: "Vrikshamitra Society", city: "Pune", state: "Maharashtra", contact: "+91 20 2567 1234" },
+                { name: "Greenpeace Southeast Asia - India", city: "Mumbai", state: "Maharashtra", contact: "+91 22 2675 1234" },
+                { name: "Chaitanya Environmental Foundation", city: "Pune", state: "Maharashtra", contact: "+91 20 2545 6789" },
+                { name: "Social Action for Forest and Environment (SAFE)", city: "Pune", state: "Maharashtra", contact: "+91 20 2568 1234" },
+                { name: "Bharati Vidyapeeth Institute of Environment Education and Research", city: "Pune", state: "Maharashtra", contact: "+91 20 2567 2345" },
+                { name: "Sustainable Earth Trust", city: "Pune", state: "Maharashtra", contact: "+91 20 2568 1234" },
+                { name: "EcoNeeds Foundation", city: "Pune", state: "Maharashtra", contact: "+91 20 2567 1234" },
+                { name: "Sahyadri Nisarga Mitra (SNM)", city: "Pune", state: "Maharashtra", contact: "+91 20 2567 2345" },
+                { name: "Green Yatra", city: "Pune", state: "Maharashtra", contact: "+91 20 2576 1234" },
+                { name: "Centre for Environmental Research and Education (CERE)", city: "Mumbai", state: "Maharashtra", contact: "+91 22 2567 2345" },
+                { name: "Help Earth", city: "Mumbai", state: "Maharashtra", contact: "+91 22 2576 2345" },
+                { name: "Forum for Organized Resource Conservation and Enhancement (FORCE)", city: "Pune", state: "Maharashtra", contact: "+91 20 2567 2345" },
+                { name: "Hills Conservation Society", city: "Shillong", state: "Meghalaya", contact: "+91 364 2523 1234" },
+                { name: "Vasundhara", city: "Bhubaneswar", state: "Odisha", contact: "+91 674 2567 2345" },
+                { name: "Tarun Bharat Sangh", city: "Alwar", state: "Rajasthan", contact: "+91 144 234 1234" },
+                { name: "Rural Environmental Protection Society (REPS)", city: "Jaipur", state: "Rajasthan", contact: "+91 141 2723 1234" },
+                { name: "Gram Swaraj Foundation", city: "Jaipur", state: "Rajasthan", contact: "+91 141 2725 2345" },
+                { name: "Tarun Bharat Sangh", city: "Alwar", state: "Rajasthan", contact: "+91 1492 2345" },
+                { name: "Society for Environment and Sustainable Development (SESD)", city: "Jaipur", state: "Rajasthan", contact: "+91 141 2567 2345" },
+                { name: "Save Indian Agriculture and Environment Foundation", city: "Jaipur", state: "Rajasthan", contact: "+91 141 2567 2345" },
+                { name: "Chulika Foundation", city: "Chennai", state: "Tamil Nadu", contact: "+91 44 2555 1234" },
+                { name: "The Rural Environmental Conservation Foundation", city: "Chennai", state: "Tamil Nadu", contact: "+91 44 2555 1234" },
+                { name: "Asha Niketan Ashram", city: "Chennai", state: "Tamil Nadu", contact: "+91 44 2555 2345" },
+                { name: "The Coastal Conservation Foundation (CCF)", city: "Chennai", state: "Tamil Nadu", contact: "+91 44 2558 1234" },
+                { name: "National Centre for Sustainable Coastal Management (NCSCM)", city: "Chennai", state: "Tamil Nadu", contact: "+91 44 2558 2345" },
+                { name: "Indian Coastal Conservation Network", city: "Chennai", state: "Tamil Nadu", contact: "+91 44 2567 1234" },
+                { name: "Environmentalist Foundation of India (EFI)", city: "Chennai", state: "Tamil Nadu", contact: "+91 44 2558 1234" },
+                { name: "The Environmentalist Foundation of India (EFI)", city: "Chennai", state: "Tamil Nadu", contact: "+91 44 2558 1234" },
+                { name: "National Centre for Sustainable Coastal Management (NCSCM)", city: "Chennai", state: "Tamil Nadu", contact: "+91 44 2578 2345" },
+                { name: "Laya Resource Centre", city: "Hyderabad", state: "Telangana", contact: "+91 40 2345 6789" },
+                { name: "Rural Development Foundation (RDF)", city: "Hyderabad", state: "Telangana", contact: "+91 40 2345 6789" },
+                { name: "South Asian Consortium for Interdisciplinary Water Resources Studies (SaciWATERs)", city: "Hyderabad", state: "Telangana", contact: "+91 40 2331 2345" },
+                { name: "Sarojini Damodaran Foundation (SDF)", city: "Hyderabad", state: "Telangana", contact: "+91 40 2322 1234" },
+                { name: "Centre for Sustainable Agriculture (CSA)", city: "Hyderabad", state: "Telangana", contact: "+91 40 2567 1234" },
+                { name: "Navdanya Trust", city: "Dehradun", state: "Uttarakhand", contact: "+91 135 264 2800" },
+                { name: "Himalayan Environmental Studies and Conservation Organization (HESCO)", city: "Dehradun", state: "Uttarakhand", contact: "+91 135 264 2800" },
+                { name: "Indian Society for Remote Sensing (ISRS)", city: "Dehradun", state: "Uttarakhand", contact: "+91 135 276 1234" },
+                { name: "Earth Care Foundation", city: "Dehradun", state: "Uttarakhand", contact: "+91 135 2567 2345" },
+                { name: "Pan Himalayan Grassroots Development Foundation", city: "Dehradun", state: "Uttarakhand", contact: "+91 135 2567 1234" },
+                { name: "Sabuj Sangha", city: "Kolkata", state: "West Bengal", contact: "+91 33 2558 1234" },
+                { name: "Sanlaap India", city: "Kolkata", state: "West Bengal", contact: "+91 33 2555 1234" },
+                { name: "Society for Environment and Social Development (SESD)", city: "Kolkata", state: "West Bengal", contact: "+91 33 2558 1234" },
+                { name: "Bhagirathi Foundation", city: "Kolkata", state: "West Bengal", contact: "+91 33 2567 2345" },
+                { name: "Association for Social and Environmental Development (ASED)", city: "Kolkata", state: "West Bengal", contact: "+91 33 2567 1234" },
+                { name: "Youth Environmental Forum", city: "Kolkata", state: "West Bengal", contact: "+91 33 2567 2345" },
+                { name: "Bharat Sevashram Sangha", city: "Kolkata", state: "West Bengal", contact: "+91 33 2357 6789" },
+                { name: "Paribesh Unnayan Parishad", city: "Kolkata", state: "West Bengal", contact: "+91 33 2357 1234" },
+                { name: "Sathi Foundation", city: "Kolkata", state: "West Bengal", contact: "+91 33 2339 2345" }
+            ];
+
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const searchTerm = searchInput.value.trim().toLowerCase();
+                const matchingNGOs = ngoData.filter(ngo => 
+                    ngo.name.toLowerCase().includes(searchTerm) ||
+                    ngo.city.toLowerCase().includes(searchTerm) ||
+                    ngo.state.toLowerCase().includes(searchTerm)
+                );
+
+                displayResults(matchingNGOs);
+            });
+
+            function displayResults(ngos) {
+                resultsDiv.innerHTML = '';
+                if (ngos.length === 0) {
+                    resultsDiv.innerHTML = '<p>No NGOs found matching your search.</p>';
+                } else {
+                    ngos.forEach(ngo => {
+                        const ngoCard = document.createElement('div');
+                        ngoCard.className = 'ngo-card';
+                        ngoCard.innerHTML = `
+                            <h3>${ngo.name}</h3>
+                            <p><strong>City:</strong> ${ngo.city}</p>
+                            <p><strong>State:</strong> ${ngo.state}</p>
+                            <p><strong>Contact:</strong> ${ngo.contact}</p>
+                        `;
+                        resultsDiv.appendChild(ngoCard);
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
