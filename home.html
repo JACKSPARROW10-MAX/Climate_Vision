@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Awareness</title>
+    <style>
+        :root {
+            --navbar-color: #34495e;
+            --primary-color: #2ecc71;
+            --footer-color: #1a237e;
+            --background-color: #fafdfd;
+            --card-front-bg: rgba(140, 213, 167, 0.8);
+            --card-back-bg: rgba(224, 242, 241, 0.9);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: var(--background-color);
+            color: #333;
+        }
+
+        nav {
+            background-color: var(--navbar-color);
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        nav li {
+            margin-left: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: url('https://www.teahub.io/photos/full/356-3568181_climate-change-background.jpg') no-repeat center center/cover;
+            padding: 15rem 5rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cards-section {
+            background: url('background_image_above_cards.jpg') no-repeat center center/cover;
+            padding: 3rem 1rem;
+        }
+
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .card {
+            width: 300px;
+            height: 200px;
+            perspective: 1000px;
+            margin: 40px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-front {
+            padding: 1.5rem;
+            background-color: var(--card-front-bg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-back {
+            color: #004d40;
+            transform: rotateY(180deg);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: var(--card-back-bg);
+        }
+
+        .social-awareness {
+            padding: 2rem;
+            background-color: #e0f7fa;
+        }
+
+        .social-awareness h2 {
+            text-align: center;
+            color: #004d40;
+        }
+
+        .awareness-columns {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .description-column {
+            flex: 1;
+        }
+
+        .image-column {
+            flex: 1;
+            text-align: center;
+        }
+
+        .image-column img {
+            width: 350px;
+            height: 350px;
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .social-awareness p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .footer {
+            padding: 1rem;
+            background-color: var(--footer-color);
+            color: white;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #80cbc4;
+            text-decoration: none;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .awareness-columns {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Climate Vision</div>
+        <ul>
+            <li><a href="home.html" class="active">Home</a></li>
+            <li><a href="map&data.html">Map and Data</a></li>
+            <li><a href="solution.html">Future Prediction</a></li>
+            <li><a href="ngo.html">NGOs</a></li>
+        </ul>      
+    </nav>
+
+    <section class="hero">
+        <h1>"The climate is changing, why aren't we?"</h1>
+    </section>
+
+    <section class="cards-section">
+        <div style="text-align: center; margin-right: 20%; margin-left: 20%;">
+            <p>The climate is indeed changing, and its impacts are becoming increasingly evident around the world, including in India. Despite scientific consensus and calls for action, change is happening at a slower pace due to various factors, including political, economic, and societal challenges. Here’s how climate change is impacting India and why it’s difficult to adapt:</p>
+            <h3>Impacts of Climate Change in India:</h3>
+            <p><strong>Rising Temperatures:</strong></p>
+            <p>Example: India has witnessed rising temperatures, with several cities breaking historical temperature records in recent years. For example, in 2022, parts of India, such as Delhi, experienced extreme heat waves, with temperatures reaching up to 49°C (120°F). Such heat waves pose serious risks to public health, agriculture, and water resources.</p>
+            <p>Effect: Increased frequency of heat waves leads to higher mortality rates, particularly among vulnerable groups like the elderly and children. It also stresses water resources and energy demand.</p>
+            <p><strong>Changing Monsoon Patterns:</strong></p>
+            <p>Example: The Indian monsoon, which is crucial for the agricultural cycle, is becoming increasingly unpredictable. In 2020, India experienced a delayed monsoon, which affected the sowing season for crops, particularly rice and wheat.</p>
+            <p>Effect: Erratic monsoons lead to droughts and floods, impacting food security and livelihoods. Farmers struggle to plan their crops, and crop yields are often lower or more prone to damage.</p>
+            <h3>Why Aren't We Changing Faster?</h3>
+            <p><strong>Political Will and Policy Implementation:</strong> Despite global awareness, India has been slow to implement large-scale policies for climate action. Much of the focus has been on economic growth, with limited attention to sustainable development. Political and economic pressures often slow down the adoption of green technologies.</p>
+            <p><strong>Economic Priorities:</strong> India’s economic development is largely driven by fossil fuel industries. Coal, oil, and natural gas are central to India’s energy mix, making it difficult to transition to renewable energy sources quickly. There is resistance to shifting away from industries that contribute significantly to employment and GDP.</p>
+            <p><strong>Social and Cultural Barriers:</strong> Climate change requires changes in individual behavior, but many people, especially in rural areas, lack awareness or understanding of climate science. Additionally, traditional practices, such as burning crop residue, remain widespread despite their contribution to air pollution.</p>
+        </div>
+    </section>
+
+    <section class="cards-section">
+        <div class="cards-container">
+            <div class="card" onclick="window.location.href='https://www.carbonfootprint.com/calculator.aspx';">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h2>Calculate Carbon Footprint</h2>
+                        <p>Understand your environmental impact and take action.</p>
+                    </div>
+                    <div class="card-back">
+                        <p>Knowing your carbon footprint is the first step towards a sustainable lifestyle and reducing your impact on climate change.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="window.location.href='https://www.carbonfootprint.com/calculator.aspx';">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h2>Track Your Emissions</h2>
+                        <p>Monitor and reduce your carbon footprint.</p>
+                    </div>
+                    <div class="card-back">
+                        <p>Tracking emissions helps in making conscious choices to lower greenhouse gas output and combat global warming.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="window.location.href='https://www.carbonfootprint.com/calculator.aspx';">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h2>Sustainable Living</h2>
+                        <p>Explore green habits and eco-friendly practices.</p>
+                    </div>
+                    <div class="card-back">
+                        <p>Sustainable living ensures a balance with nature, preserving resources for future generations while reducing carbon impact.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="social-awareness">
+        <h2>Raising Awareness</h2>
+        <div class="awareness-columns">
+            <div class="description-column">
+                <h3>Social Awareness About Disaster Management and Climate Change</h3>
+                <h4>Understanding the Urgency</h4>
+                <p>Climate change is one of the most pressing challenges of our time. Rising global temperatures, melting glaciers, extreme weather events, and rising sea levels are all direct consequences of increased greenhouse gas emissions. These changes lead to an increase in natural disasters such as hurricanes, wildfires, floods, and droughts, affecting millions of people and threatening ecosystems.</p>
+                <p>Natural disasters are becoming more frequent and intense due to the rise in global temperatures. Hurricanes, floods, and wildfires are just a few examples of catastrophic events influenced by climate change.</p> 
+                <p>By adopting sustainable practices and reducing carbon emissions, we can mitigate these effects and protect our future.</p>
+                <h4>Disaster Management and Its Importance</h4>
+                <p><strong>Preparedness:</strong> Educating people on emergency protocols, evacuation plans, and survival kits.</p>
+                <p><strong>Prevention and Mitigation:</strong> Investing in sustainable infrastructure, better urban planning, and climate-resilient farming to minimize disaster impacts.</p>
+                <p><strong>Community Involvement:</strong> Encouraging local groups to organize disaster drills, awareness campaigns, and volunteer for relief operations.</p>
+            </div> 
+
+            <div class="image-column">
+                <img src="https://www.shutterstock.com/image-vector/reduce-carbon-footprint-vector-illustration-600nw-2345676503.jpg" alt="Infographic about reducing carbon footprint">
+                <img src="https://piktochart.com/wp-content/uploads/2022/03/climate-change-infographic-683x1024.jpg" alt="Climate change infographic">
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Contact Us: info@climateaware.org | Help Center: 123-456-7890</p>
+        <p>Copyright © 2025 Climate Awareness Initiative. All Rights Reserved.</p>
+        <p>Address: 123 Green Earth Lane, Sustainability City, World.</p>
+    </footer>
+</body>
+</html>
