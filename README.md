@@ -58,7 +58,7 @@ Our platform integrates **data visualization**, **AI predictions**, and **commun
 | Backend             | Flask                     |
 | Database            | SQL                       |
 | AI/ML Frameworks    | TensorFlow, scikit-learn  |
-| Mapping Tools       | Leaflet.js, Google Maps   |
+| Mapping Tools       | mapline, Google Maps      |
 
 ---
 
